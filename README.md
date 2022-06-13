@@ -15,7 +15,7 @@ Budget Tracker is a Progressive Web Application (PWA) that allows the user to ke
 * `npm start` 
 
 ## Demo
-![Application screenshot]()
+![Application screenshot](https://github.com/Lukesturgill/budget-tracker/blob/main/public/assets/Screen%20Shot%202022-06-13%20at%202.07.07%20AM.png?raw=true)
 
 ## Deployed Application
 * 
