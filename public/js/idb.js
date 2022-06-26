@@ -1,17 +1,17 @@
-let database;
+let db;
 
 // Connect to IndexedDB, set to version 1
 const connect = indexedDB.open('budget_tracker', 1);
 
 connect.onupgradeneeded = function(event) {
-    // save a reference to the database
-    const database = event.target.result;
+    // save a reference to the db
+    const db = event.target.result;
     // create an object store (table) called 'new_transaction' set with auto incrementing primary keys
-    database.createObjectStore('new_transaction', { autoIncrement: true });
+    db.createObjectStore('new_transaction', { autoIncrement: true });
 };
 
 connect.onsuccess = function(event) {
-    database = event.target.result;
+    db = event.target.result;
 
     // check if app is online, run the loadTransaction() function
     if (navigator.onLine) {
@@ -25,7 +25,7 @@ connect.onerror = function(event) {
 
 // Runs saveTransaction() function if a new transaction is submitted while user is offline
 function saveTransaction(record) {
-    const transaction = database.transaction(['new_transaction'], 'readwrite');
+    const transaction = db.transaction(['new_transaction'], 'readwrite');
     
     const storeBudget = transaction.objectStore('new_transaction');
     
@@ -35,7 +35,7 @@ function saveTransaction(record) {
 function loadTransaction() {
 
     // Open a transaction
-    const transaction = database.transaction(['new_transaction'], 'readwrite');
+    const transaction = db.transaction(['new_transaction'], 'readwrite');
     
     // access users object store
     const storeBudget = transaction.objectStore('new_transaction');
@@ -62,7 +62,7 @@ function loadTransaction() {
                 }
                 
                 // open another transaction
-                const transaction = database.transaction(['new_transaction'], 'readwrite');
+                const transaction = db.transaction(['new_transaction'], 'readwrite');
 
                 // access the new transaction stored
                 const storeBudget = transaction.objectStore('new_transaction');
