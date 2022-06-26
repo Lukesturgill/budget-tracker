@@ -78,6 +78,6 @@ function loadTransaction() {
         }
     }
 };
-
+//comment to re-push to heroku
 // listen for app coming back online
 window.addEventListener('online', loadTransaction);
