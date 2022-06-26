@@ -1,4 +1,4 @@
-const database;
+let database;
 
 // Connect to IndexedDB, set to version 1
 const connect = indexedDB.open('budget_tracker', 1);
